@@ -72,10 +72,9 @@ def word_count(s):
 def remove_punctuations(s):
 
     pattern = string.punctuation
-    pattern.replace("'","\'")
-    pattern = '['+pattern+']'
-    print(pattern)
-    return re.sub(pattern,'',s)
+    # pattern.replace("'","\'")
+    # pattern = '['+pattern+']'
+    return re.sub(f'{pattern}','',s)
 
 
 def remove_whitespaces(s):
