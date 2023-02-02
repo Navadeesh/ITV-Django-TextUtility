@@ -1,6 +1,5 @@
 from django.shortcuts import HttpResponse, render
-import re
-import string
+from .utilityfunc import *
 
 def home_func(request):
     return render(request, 'index.html')
@@ -58,28 +57,3 @@ def analyze_func(request):
 
         return render(request, 'output.html', mydict)
 
-def make_capitalize(s):
-
-    return s.upper()
-
-
-def word_count(s):
-    if s == '':
-        return 0
-    return len(s.replace('\n',' ').split(' '))
-
-
-def remove_punctuations(s):
-
-    pattern = string.punctuation
-    # pattern.replace("'","\'")
-    # pattern = '['+pattern+']'
-    return re.sub(f'{pattern}','',s)
-
-
-def remove_whitespaces(s):
-    return re.sub('\s','',s)
-
-
-def remove_newline(s):
-    return s.replace('\n','')
