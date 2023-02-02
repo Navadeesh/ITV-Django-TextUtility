@@ -14,13 +14,25 @@ def word_count(s):
 
 def remove_punctuations(s):
 
-    pattern = string.punctuation
     
     #Method 1
-    # pattern.replace("'","\'")
-    # pattern = '['+pattern+']'
+    
+    # pattern = '[\\!"#$%&\'*+,-.:;<=>?@]'   # Cant remove \ (Backslash)
 
-    # return re.sub(f'{pattern}','',s)
+    # pattern = r'[\W\\]+'   # This removes spaces or newline
+
+    pattern = r'[^\w\s]'     # Correct pattern
+    print(re.sub(pattern,'',s))
+    return re.sub(pattern,'',s)
+
+    # pat = '[a-zA-Z0-9\s]+'
+
+    # final_s = ''
+
+    # for i in re.findall(pat,s):
+    #     final_s += i
+
+    # return final_s
 
     #Method 2
     # final_s = ''
@@ -33,17 +45,28 @@ def remove_punctuations(s):
     # return final_s
 
     #Method 3
-    for i in s:
-        if i in pattern:
-            s = s.replace(i,'')
+    # for i in s:
+    #     if i in pattern:
+    #         s = s.replace(i,'')
 
-    return s
+    # return s
 
 
 
 def remove_whitespaces(s):
-    return re.sub('\s','',s)
+    
+    #Method 1
+    # return re.sub('\s','',s)
+
+    #Method 2
+    pat = string.whitespace
+    for i in s:
+        if i in pat:
+            s = s.replace(i,'')
+    return s
+        
 
 
 def remove_newline(s):
+
     return s.replace('\n','')
